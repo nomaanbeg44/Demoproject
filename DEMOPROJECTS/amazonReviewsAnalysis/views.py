@@ -42,10 +42,11 @@ def visualization(request):
         return render(request, 'login.html')
 
 def getPlot1(request):
+    # plot for total positve and negative
     data=k[2]
     group = data.groupby('Sentiment')['Text'].count()
-    col=['Negative', 'Positive']
-    count=[group.negative, group.positive]
+    col=['Positive', 'Negative']
+    count=[group.positive, group.negative]
     p = figure(x_range=col, plot_height=250, title="Total positive and Negative Reviews",
                toolbar_location=None, tools="")
     p.vbar(x=col, top=count, width=0.9)
@@ -57,19 +58,18 @@ def getPlot1(request):
     return render(request, 'adminPage.html',{'loader': revs})
 
 def getPlot3(request):
+    # plot for total reviews for each score
     data=k[2]
-    group = data.groupby('Score')['Text'].count().rename_axis('Score').reset_index(name='Total_Reviews')
-    col=['1','2','3','4','5']
-    count=[group.Total_Reviews[0],group.Total_Reviews[1],group.Total_Reviews[2],group.Total_Reviews[3],group.Total_Reviews[4]]
-    p = figure(x_range=col, plot_height=250, title="Total Reviews for evey Score",
-           toolbar_location=None, tools="")
-    p.vbar(x=col, top=count, width=0.9)
-    p.xgrid.grid_line_color = None
-    p.y_range.start = 0
+    score_df = data['Score'].value_counts(ascending = False).rename_axis('Score').reset_index(name='Counts').sort_values('Score',ascending=False)
+    p = figure(x_range=score_df['Score'].astype(str).tolist(), plot_height=450, title="Score Counts",
+           toolbar_location=None, y_range=(0,400000),lod_interval = 50000)
+    p.vbar(x=score_df['Score'].astype(str).tolist(), top=score_df['Counts'].tolist(), width=0.9)
+    p.left[0].formatter.use_scientific = False
     show(p)
     return render(request, 'adminPage.html',{'loader': revs})
 
 def getPlot4(request):
+    # plot for top 20 users
     data=k[2]
     top_users = data['UserId'].value_counts().head(20).rename_axis('UserId').reset_index(name='Total_Reviews')
     i3 = top_users.set_index('UserId').index
@@ -77,15 +77,18 @@ def getPlot4(request):
     top_users = pd.merge(top_users,
                          data[i4.isin(i3)].groupby('UserId')['Helpfulness'].mean().rename_axis('UserId').reset_index(name='Avg_Helpfulness_percentage'),
                          on="UserId")
+    top_users['Avg_Helpfulness_percentage'] = 100 * top_users['Avg_Helpfulness_percentage']
     p = figure(x_range=top_users['UserId'].tolist(), plot_height=400, plot_width=700, title="Top 20 users with Maximum numbers of reviews given",
                toolbar_location=None,y_range=(0, 500))
     p.vbar(x=top_users['UserId'].tolist(), top=top_users['Total_Reviews'].tolist(), width=0.5)
+    p.line(top_users['UserId'].tolist(),top_users['Avg_Helpfulness_percentage'].tolist(),color='red',line_width=1)
     p.xaxis.major_label_orientation = "vertical"
     p.y_range.start = 0
     show(p)
     return render(request, 'adminPage.html',{'loader': revs})
 
 def getPlot2(request):
+    # top 20 most reviewed product
     review_df=k[2]
     top_products = review_df['ProductId'].value_counts().head(20).rename_axis('Product_Id').reset_index(name='Total Reviews')
     i1 = review_df.set_index('ProductId').index

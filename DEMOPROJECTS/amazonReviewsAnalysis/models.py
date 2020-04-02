@@ -20,7 +20,6 @@ class Reviews:
         data = data.loc[:, ['Summary','Text', 'Score', 'ProductId','HelpfulnessNumerator','UserId', 'HelpfulnessDenominator']]
         data["Sentiment"] = data["Score"].apply(lambda score: "positive" if score > 3 else "negative")
         data['Helpfulness'] = data['HelpfulnessNumerator']/data['HelpfulnessDenominator']
-        #data.dropna(subset=['Summary'], inplace=True)
         data['Text_Clean']=data['Text'].apply(self.cleanup)
         df=data[data['Score']!=3]
         tfidf_transformer = TfidfVectorizer(ngram_range=(1,2), stop_words='english')
