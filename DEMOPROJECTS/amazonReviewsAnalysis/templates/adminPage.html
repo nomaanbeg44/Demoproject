@@ -2,18 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Elements</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Amazon template project">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
-<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'styles/elements.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'styles/elements_responsive.css' %}">
+	<title>Review Analysis</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Amazon template project">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+	<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'styles/elements.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'styles/elements_responsive.css' %}">
 </head>
 <body>
 
@@ -27,7 +27,7 @@
 				<div class="col">
 					<div class="header_content d-flex flex-row align-items-center justify-content-start">
 						<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
-							<div class="logo"><a href="homepage.html">Amazon</a></div>
+							<div class="logo"><a href="index.html">Amazon Fine Food</a></div>
 							<nav class="main_nav">
 								<ul class="d-flex flex-row align-items-start justify-content-start">
 									<li class="active"><a href="homepage.html">Home</a></li>
@@ -35,7 +35,7 @@
 									<li><a href="#">Services</a></li>
 								</ul>
 							</nav>
-							<div class="header_phone ml-auto">Call us: 00-56 445 678 33</div>
+							<div class="header_phone ml-auto">Call us: 00-33 765 987 98</div>
 
 							<!-- Hamburger -->
 
@@ -60,6 +60,8 @@
 		</div>
 	</header>
 
+
+
 	<!-- Elements -->
 
 	<div class="elements">
@@ -68,38 +70,40 @@
 				<div class="col">
 
 					<!-- Buttons -->
-					<!-- Visualization Option Bars -->
+
+
+					<!-- Accordions & Tabs -->
 
 					<div class="elements_accordions_tabs">
-						<div class="elements_title">Review Visualization</div>
+						<div class="elements_title">Visualiztion Tabs</div>
 						<div class="row">
 							<div class="col-lg-6">
 								<div class="elements_accordions">
 									<div class="accordions">
 
 										<div class="accordion_container">
-											<div class="accordion d-flex flex-row align-items-center"><div><a href="getfigure">Plot for total Positve and Negative Reviews</a></div></div>
+											<div class="accordion d-flex flex-row align-items-center"><div><a href="getPlot3">Total Reviews for each score</a></div></div>
 											<div class="accordion_panel">
 												<div>
-													<p>Count Plot of total postive and negative reviews given by Users</p>
+													<p>This plot shows the total reviews given by users for every score from 1-5.</p>
 												</div>
 											</div>
 										</div>
 
 										<div class="accordion_container">
-											<div class="accordion d-flex flex-row align-items-center"><div>Visualization 2 </div></div>
+											<div class="accordion d-flex flex-row align-items-center"><div><a href="getPlot2">Top 20 reviewed Product</a></div></div>
 											<div class="accordion_panel">
 												<div>
-													<p></p>
+													<p>This plot shows the top 20 product with maximum reviews.</p>
 												</div>
 											</div>
 										</div>
 
 										<div class="accordion_container">
-											<div class="accordion d-flex flex-row align-items-center active"><div>Visualization 3</div></div>
+											<div class="accordion d-flex flex-row align-items-center active"><div><a href="getPlot4">Top 20 users</a></div></div>
 											<div class="accordion_panel">
 												<div>
-													<p></p>
+													<p>This plot shows the top 20 users with maximum reviews given.</p>
 												</div>
 											</div>
 										</div>
@@ -107,8 +111,77 @@
 									</div>
 								</div>
 							</div>
+							<div class="col-lg-6">
+								<div class="tabs">
+									<div class="tabs_container">
+										<div class="tabs d-flex flex-row align-items-center justify-content-start flex-wrap">
+											<div class="tab"><a href="getPlot1">Total positive and negative reviews</a></div>
+
+										</div>
+										<div class="tab_panels">
+											<div class="tab_panel">
+												<div class="tab_panel_content">
+													<div class="tab_text">
+														<p>This plot shows the total positve and negative reviews given by users.</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
+
+					<!-- Loaders -->
+
+					<div class="loaders">
+						<div class="elements_title">Loaders</div>
+
+						<!-- Loaders -->
+						<div class="row loaders_container">
+							<div class="col-lg-3 loader_col">
+								<!-- Loader -->
+								<div class="loader" data-perc={{loader.reviews_count.0}}>
+									<div class="loader_content">
+										<div class="loader_title">Psitive Reviews</div>
+										<div class="loader_subtitle">Psitive reviews given by users.</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 loader_col">
+								<!-- Loader -->
+								<div class="loader" data-perc={{loader.reviews_count.1}}>
+									<div class="loader_content">
+										<div class="loader_title">Ngeative Reviews</div>
+										<div class="loader_subtitle">Negative reviews give by users.</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 loader_col">
+								<!-- Loader -->
+								<div class="loader" data-perc={{loader.reviews_count.2}}>
+									<div class="loader_content">
+										<div class="loader_title">Neutral Reviews</div>
+										<div class="loader_subtitle">Neutral reviews give by users.</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 loader_col">
+								<!-- Loader -->
+								<div class="loader" data-perc={{loader.reviews_count.3}}>
+									<div class="loader_content">
+										<div class="loader_title">Genuine Reviews</div>
+										<div class="loader_subtitle">Reviews with greater than 50% helpfulness.</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Milestones -->
+					<!-- Icon Boxes -->
+
 				</div>
 			</div>
 		</div>
@@ -116,15 +189,13 @@
 
 	<!-- Footer -->
 
-	<footer class="footer">
-
-		<div class="col text-center"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </div>
+	<div class="col text-center"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+		Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+		<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </div>
 	</footer>
 </div>
 
-<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
 <script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
 <script src="{% static 'plugins/greensock/TweenMax.min.js' %}"></script>
